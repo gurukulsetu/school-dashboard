@@ -1,0 +1,1214 @@
+/* School Admin Dashboard - Modern Color Scheme */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --info-color: #16a085;
+  --light-bg: #ecf0f1;
+  --dark-bg: #34495e;
+  --text-dark: #2c3e50;
+  --text-light: #7f8c8d;
+  --white: #ffffff;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  --border-radius: 8px;
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-light);
+  border-radius: var(--border-radius);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dark);
+}
+
+/* Layout */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Fixed Sidebar */
+.sidebar {
+  width: 280px;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-bg) 100%);
+  color: var(--white);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  overflow-y: auto;
+  z-index: 1040;
+  transform: translateX(-100%);
+  transition: var(--transition);
+}
+
+.sidebar.show {
+  transform: translateX(0);
+}
+
+.sidebar-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1039;
+}
+
+/* Main wrapper for header + content */
+.main-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 0;
+  transition: var(--transition);
+}
+
+/* Header */
+.header-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Page title in header - replaces school name */
+.page-title-header-section {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-left: 280px; /* Same as sidebar width */
+  transition: var(--transition);
+}
+
+.page-icon {
+  font-size: 1.4rem;
+}
+
+.page-title-main {
+  color: var(--primary-color);
+}
+
+.notification-btn {
+  font-size: 1.2rem;
+  padding: 0.375rem 0.75rem;
+}
+
+.notification-badge {
+  font-size: 0.7rem;
+  transform: translate(50%, -50%);
+}
+
+.notification-menu {
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.notification-item {
+  padding: 0.25rem 0;
+}
+
+.user-dropdown {
+  padding: 0.375rem 0.75rem;
+}
+
+.user-avatar {
+  font-size: 1.5rem;
+}
+
+.user-avatar-large {
+  font-size: 2rem;
+}
+
+.user-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+.user-menu {
+  width: 280px;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  background-color: var(--light-bg);
+  padding: 0;
+}
+
+/* Page title */
+.page-title {
+  color: var(--primary-color);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Desktop styles */
+@media (min-width: 992px) {
+  .sidebar {
+    transform: translateX(0);
+  }
+  
+  .main-wrapper {
+    margin-left: 280px;
+  }
+  
+  .main-content {
+    margin-left: 280px;
+  }
+}
+
+/* Cards - Compact Statistics (side-by-side layout) */
+.stat-card-compact {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 0.75rem; /* Smaller padding */
+  transition: var(--transition);
+  border-left: 4px solid var(--secondary-color);
+  height: 100%;
+}
+
+.stat-card-compact:hover {
+  transform: translateY(-2px); /* Reduced hover effect */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card-compact .stat-icon {
+  width: 35px; /* Smaller icon container */
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem; /* Smaller icon */
+  flex-shrink: 0;
+}
+
+.stat-card-compact .stat-content h4 {
+  font-size: 1.25rem; /* Smaller number */
+  line-height: 1.2;
+}
+
+.stat-card-compact .stat-content p {
+  font-size: 0.8rem; /* Smaller label */
+  line-height: 1.2;
+}
+
+.stat-card-compact.students .stat-icon {
+  background: linear-gradient(135deg, var(--secondary-color), #5dade2);
+  color: var(--white);
+}
+
+.stat-card-compact.staff .stat-icon {
+  background: linear-gradient(135deg, var(--success-color), #58d68d);
+  color: var(--white);
+}
+
+.stat-card-compact.classes .stat-icon {
+  background: linear-gradient(135deg, var(--warning-color), #f7dc6f);
+  color: var(--white);
+}
+
+.stat-card-compact.fees .stat-icon {
+  background: linear-gradient(135deg, var(--accent-color), #ec7063);
+  color: var(--white);
+}
+
+/* Action Cards - Larger (like old statistics) */
+.action-card {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem; /* Larger padding */
+  transition: var(--transition);
+  border-left: 4px solid var(--secondary-color);
+  height: 120px; /* Fixed height for consistency */
+  display: flex;
+  flex-direction: column;
+}
+
+.action-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.action-card .action-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin: 0 auto;
+}
+
+.action-card.success {
+  border-left-color: var(--success-color);
+}
+
+.action-card.success .action-icon {
+  background: linear-gradient(135deg, var(--success-color), #58d68d);
+  color: var(--white);
+}
+
+.action-card.warning {
+  border-left-color: var(--warning-color);
+}
+
+.action-card.warning .action-icon {
+  background: linear-gradient(135deg, var(--warning-color), #f7dc6f);
+  color: var(--white);
+}
+
+.action-card.danger {
+  border-left-color: var(--accent-color);
+}
+
+.action-card.danger .action-icon {
+  background: linear-gradient(135deg, var(--accent-color), #ec7063);
+  color: var(--white);
+}
+
+.action-card.info {
+  border-left-color: var(--info-color);
+}
+
+.action-card.info .action-icon {
+  background: linear-gradient(135deg, var(--info-color), #48c9b0);
+  color: var(--white);
+}
+
+/* Action Cards Compact - Same layout as statistics */
+.action-card-compact {
+  background: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  padding: 0.75rem; /* Compact padding */
+  transition: var(--transition);
+  border-left: 4px solid var(--secondary-color);
+  height: 100%;
+  cursor: pointer;
+  position: relative; /* Add positioning context for dropdown */
+}
+
+.action-card-compact:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.action-card-compact .action-icon {
+  width: 35px; /* Same as stats compact */
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem; /* Same as stats compact */
+  flex-shrink: 0;
+}
+
+.action-card-compact .action-content h6 {
+  font-size: 0.9rem; /* Compact text size */
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+/* Dropdown menu positioning and z-index */
+.action-card-compact .dropdown-menu {
+  z-index: 1050 !important; /* Ensure dropdown appears above other cards */
+  min-width: 200px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.action-card-compact .dropdown-toggle {
+  text-align: left !important;
+}
+
+.action-card-compact .dropdown-toggle::after {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.action-card-compact.students {
+  border-left-color: var(--secondary-color);
+}
+
+.action-card-compact.students .action-icon {
+  background: linear-gradient(135deg, var(--secondary-color), #5dade2);
+  color: var(--white);
+}
+
+.action-card-compact.staff {
+  border-left-color: var(--success-color);
+}
+
+.action-card-compact.staff .action-icon {
+  background: linear-gradient(135deg, var(--success-color), #58d68d);
+  color: var(--white);
+}
+
+.action-card-compact.classes {
+  border-left-color: var(--warning-color);
+}
+
+.action-card-compact.classes .action-icon {
+  background: linear-gradient(135deg, var(--warning-color), #f7dc6f);
+  color: var(--white);
+}
+
+.action-card-compact.fees {
+  border-left-color: var(--accent-color);
+}
+
+.action-card-compact.fees .action-icon {
+  background: linear-gradient(135deg, var(--accent-color), #ec7063);
+  color: var(--white);
+}
+
+.action-card-compact.success {
+  border-left-color: var(--success-color);
+}
+
+.action-card-compact.success .action-icon {
+  background: linear-gradient(135deg, var(--success-color), #58d68d);
+  color: var(--white);
+}
+
+.action-card-compact.warning {
+  border-left-color: var(--warning-color);
+}
+
+.action-card-compact.warning .action-icon {
+  background: linear-gradient(135deg, var(--warning-color), #f7dc6f);
+  color: var(--white);
+}
+
+.action-card-compact.danger {
+  border-left-color: var(--accent-color);
+}
+
+.action-card-compact.danger .action-icon {
+  background: linear-gradient(135deg, var(--accent-color), #ec7063);
+  color: var(--white);
+}
+
+.action-card-compact.info {
+  border-left-color: var(--info-color);
+}
+
+.action-card-compact.info .action-icon {
+  background: linear-gradient(135deg, var(--info-color), #48c9b0);
+  color: var(--white);
+}
+
+/* Dropdown toggle for action cards */
+.action-dropdown-toggle {
+  border-radius: 0 8px 8px 0 !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.1) !important;
+  height: 120px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-dropdown-toggle.success {
+  background: linear-gradient(135deg, var(--success-color), #58d68d) !important;
+  border-color: var(--success-color) !important;
+}
+
+.action-dropdown-toggle.warning {
+  background: linear-gradient(135deg, var(--warning-color), #f7dc6f) !important;
+  border-color: var(--warning-color) !important;
+}
+
+.action-dropdown-toggle.info {
+  background: linear-gradient(135deg, var(--info-color), #48c9b0) !important;
+  border-color: var(--info-color) !important;
+}
+
+/* Buttons - Made larger */
+.action-btn {
+  background: linear-gradient(135deg, var(--secondary-color), #5dade2);
+  color: var(--white);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 1rem 1.5rem; /* Increased from 0.75rem 1.5rem */
+  font-size: 1rem; /* Increased from 0.95rem */
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+  display: flex; /* Changed to flex for better alignment */
+  align-items: center;
+  justify-content: center; /* Center content */
+  gap: 0.5rem;
+  margin-bottom: 0.75rem; /* Increased spacing */
+  height: auto;
+  min-height: 50px; /* Ensure consistent height */
+}
+
+.action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.action-btn.success {
+  background: linear-gradient(135deg, var(--success-color), #58d68d);
+}
+
+.action-btn.success:hover {
+  box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4);
+}
+
+.action-btn.warning {
+  background: linear-gradient(135deg, var(--warning-color), #f7dc6f);
+}
+
+.action-btn.warning:hover {
+  box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+}
+
+.action-btn.danger {
+  background: linear-gradient(135deg, var(--accent-color), #ec7063);
+}
+
+.action-btn.danger:hover {
+  box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+}
+
+/* Navigation */
+.nav-link {
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: var(--border-radius) !important;
+  margin: 0.25rem 0 !important;
+  transition: var(--transition) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.75rem !important;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--white) !important;
+}
+
+.nav-link.active {
+  background: linear-gradient(135deg, var(--secondary-color), #5dade2) !important;
+}
+
+/* Sidebar Dropdown Styles */
+.nav-dropdown .dropdown-toggle {
+  color: rgba(255, 255, 255, 0.8) !important;
+  padding: 0.75rem 1rem !important;
+  border-radius: var(--border-radius) !important;
+  margin: 0.25rem 0 !important;
+  transition: var(--transition) !important;
+  text-align: left;
+}
+
+.nav-dropdown .dropdown-toggle:hover,
+.nav-dropdown .dropdown-toggle.show {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: var(--white) !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.nav-dropdown .dropdown-toggle::after {
+  float: right;
+  margin-top: 0.3rem;
+}
+
+.sidebar-dropdown-menu {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: none !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15) !important;
+  margin-left: 1rem;
+  min-width: 200px;
+}
+
+.sidebar-dropdown-item {
+  color: var(--text-dark) !important;
+  padding: 0.5rem 1rem !important;
+  font-size: 0.9rem !important;
+  transition: var(--transition) !important;
+}
+
+.sidebar-dropdown-item:hover {
+  background: var(--secondary-color) !important;
+  color: var(--white) !important;
+}
+
+/* Login Form - More rectangular and responsive */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  padding: 1rem;
+}
+
+.login-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  min-height: auto;
+}
+
+.login-card .card-body {
+  padding: 2rem 1.5rem;
+}
+
+.login-card h2 {
+  color: var(--primary-color);
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.login-card .form-control {
+  border-radius: 8px;
+  border: 2px solid #e9ecef;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+}
+
+.login-card .form-control:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.login-card .action-btn {
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 991.98px) {
+  .main-wrapper {
+    margin-left: 0;
+  }
+  
+  .action-btn {
+    width: 100%;
+    margin: 0.25rem 0;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .stat-card {
+    margin-bottom: 1rem;
+  }
+  
+  .stat-card .card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-card h3 {
+    font-size: 1.25rem;
+  }
+  
+  .stat-card p {
+    font-size: 0.8rem;
+  }
+  
+  .action-btn {
+    padding: 0.875rem 1.25rem;
+    font-size: 0.9rem;
+    min-height: 45px;
+  }
+  
+  .header-navbar .navbar-brand {
+    font-size: 1rem;
+  }
+  
+  .user-dropdown .user-name {
+    display: none;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .main-content {
+    padding: 0;
+  }
+  
+  .container-fluid {
+    padding: 1rem;
+  }
+  
+  .stat-card {
+    padding: 0.75rem;
+  }
+  
+  .action-btn {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+  
+  .notification-menu,
+  .user-menu {
+    width: 250px;
+  }
+  
+  /* Login responsive styles */
+  .login-container {
+    padding: 0.5rem;
+  }
+  
+  .login-card .card-body {
+    padding: 1.5rem 1rem;
+  }
+  
+  .login-card h2 {
+    font-size: 1.5rem;
+  }
+  
+  .login-card .form-control {
+    padding: 0.65rem 0.85rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Custom Badge */
+.custom-badge {
+  background: linear-gradient(135deg, var(--info-color), #48c9b0);
+  color: var(--white);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ===========================
+   LOGIN PAGE STYLES
+   =========================== */
+.login-page {
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+}
+
+.login-page .container-fluid {
+  height: 100vh;
+  padding: 0;
+}
+
+/* Left Side - Branding Section */
+.login-brand-section {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-bg) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-brand-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="rgba(255,255,255,0.03)" fill-opacity="0.4"><circle cx="30" cy="30" r="4"/></g></svg>') repeat;
+  opacity: 0.1;
+}
+
+.login-brand-content {
+  position: relative;
+  margin: auto;
+  z-index: 2;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.logo-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  display: block;
+  text-align: center;
+}
+
+.brand-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: white;
+  text-align: center;
+  width: 100%;
+}
+
+.brand-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.brand-features {
+  margin-bottom: 2rem;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.feature-icon {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+.feature-text h5 {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.feature-text p {
+  opacity: 0.8;
+  margin-bottom: 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+.brand-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.contact-icon {
+  margin-right: 0.75rem;
+  font-size: 1rem;
+}
+
+/* Right Side - Login Form Section */
+.login-form-section {
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0;
+}
+
+.login-form-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 0;
+}
+
+.mobile-brand {
+  text-align: center;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1rem;
+}
+
+.mobile-logo {
+  font-size: 2rem;
+}
+
+.login-form-card {
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 0;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+.login-btn {
+  background: linear-gradient(135deg, var(--secondary-color), var(--info-color));
+  border: none;
+  border-radius: 8px;
+  padding: 0.875rem 1.5rem;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.login-btn:disabled {
+  transform: none;
+  opacity: 0.7;
+}
+
+/* Mobile Responsive */
+@media (max-width: 991.98px) {
+  .login-form-section {
+    height: 100vh;
+    padding: 0.5rem;
+  }
+  
+  .login-form-container {
+    padding: 0.5rem;
+  }
+  
+  .login-form-card {
+    padding: 1.5rem;
+    box-shadow: none;
+    border: none;
+  }
+  
+  .mobile-brand h4 {
+    font-size: 1.3rem;
+  }
+  
+  .mobile-brand {
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-logo {
+    font-size: 1.8rem;
+  }
+  
+  .form-header {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .login-form-card {
+    padding: 1.25rem;
+  }
+  
+  .form-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* PWA and Offline Styles */
+.error-page, .offline-page {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-code h1 {
+  font-size: 8rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #0d6efd, #6f42c1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  line-height: 1;
+}
+
+.error-content h2 {
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.error-actions .btn {
+  margin: 0.5rem;
+  min-width: 150px;
+}
+
+.error-illustration {
+  margin-top: 3rem;
+  opacity: 0.3;
+}
+
+.offline-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.offline-tips {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.offline-tips ul {
+  text-align: left;
+}
+
+.offline-tips li {
+  padding: 0.25rem 0;
+}
+
+/* PWA Install Button */
+.pwa-install-banner {
+  background: linear-gradient(135deg, #0d6efd, #6f42c1);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.pwa-install-banner.show {
+  transform: translateY(0);
+}
+
+.pwa-install-banner .btn-close {
+  filter: invert(1);
+}
+
+/* Offline indicator */
+.offline-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #dc3545;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  z-index: 1060;
+  font-size: 0.875rem;
+}
+
+/* PWA specific styles */
+@media (display-mode: standalone) {
+  /* Styles when app is installed as PWA */
+  body {
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+  }
+  
+  /* Add safe area padding for devices with notches */
+  .app {
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Touch-friendly styles for mobile */
+@media (max-width: 768px) {
+  .btn {
+    min-height: 44px; /* Apple's recommended touch target size */
+    padding: 0.75rem 1rem;
+  }
+  
+  .nav-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+  }
+  
+  /* Improve tap targets */
+  .card {
+    cursor: pointer;
+  }
+  
+  .quick-action-card:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
+  }
+  
+  .stats-card:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Reduce animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .offline-icon {
+    animation: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .card {
+    border: 2px solid;
+  }
+  
+  .btn {
+    border: 2px solid;
+  }
+}
+
+/* Dark mode support - Commented out for now, will implement as user setting later */
+/*
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light-bg: #1a1a1a;
+    --white: #2d2d2d;
+    --text-dark: #ffffff;
+    --text-light: #b0b0b0;
+  }
+}
+*/
