@@ -2,11 +2,14 @@
   "name": "school-dashboard",
   "version": "1.0.0",
   "main": "index.js",
+  "homepage": "https://gurukulsetu.github.io/school-dashboard",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [
     "react",
@@ -25,6 +28,7 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^1.11.0",
     "bootstrap": "^5.3.8",
+    "gh-pages": "^6.3.0",
     "react": "^19.1.1",
     "react-bootstrap": "^2.10.10",
     "react-dom": "^19.1.1",
